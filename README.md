@@ -1,6 +1,6 @@
 # sona
 
-sona makes possible using umeng push in flutter.
+sona makes possible using getui push in flutter.
 
 ## Getting Started
 
