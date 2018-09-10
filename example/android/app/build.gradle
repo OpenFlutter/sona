@@ -44,6 +44,12 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                GETUI_APP_ID : "APP_ID",
+                GETUI_APP_KEY : "APP_KEY",
+                GETUI_APP_SECRET : "APP_SECRET"
+        ]
     }
 
     buildTypes {

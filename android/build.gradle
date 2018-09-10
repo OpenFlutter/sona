@@ -18,6 +18,9 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
+        }
     }
 }
 
@@ -41,10 +44,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
-    implementation 'com.umeng.sdk:common:1.5.3'
-//PushSDK必须依赖utdid库，所以需要加入对应依赖
-    implementation 'com.umeng.sdk:utdid:1.1.5.3'
-//PushSDK
-    api 'com.umeng.sdk:push:4.2.0'
+    api 'com.getui:sdk:2.12.5.0'
 }
