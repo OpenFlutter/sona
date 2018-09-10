@@ -9,6 +9,18 @@
   [registrar addMethodCallDelegate:instance channel:channel];
 }
 
+BOOL  isRgisterGetuiBySona = YES;
+
++ (BOOL) registerGetuiPushBySona{
+  return isRgisterGetuiBySona;
+}
+
++ (void) setRegisterGetuiPushBySona:(BOOL) registerGetuiPushBySona{
+  isRgisterGetuiBySona = registerGetuiPushBySona;
+}
+
+
+
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);

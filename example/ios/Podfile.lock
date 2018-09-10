@@ -1,14 +1,9 @@
 PODS:
   - Flutter (1.0.0)
+  - GTSDK (2.3.0.0)
   - sona (0.0.1):
     - Flutter
-    - UMCAnalytics
-    - UMCCommon
-    - UMCSecurityPlugins
-  - UMCAnalytics (5.5.0):
-    - UMCCommon
-  - UMCCommon (1.5.2)
-  - UMCSecurityPlugins (1.0.6)
+    - GTSDK
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
@@ -16,9 +11,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - UMCAnalytics
-    - UMCCommon
-    - UMCSecurityPlugins
+    - GTSDK
 
 EXTERNAL SOURCES:
   Flutter:
@@ -28,10 +21,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
-  sona: 2f1884e4dce1673c5430660a9fceb9099a48702b
-  UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
-  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
-  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  GTSDK: 16f570807190eca9846653886a1f399cb0485061
+  sona: bb09fa7309e41462f9a189ea1791e2bb4d63ae56
 
 PODFILE CHECKSUM: 1e5af4103afd21ca5ead147d7b81d06f494f51a2
 
