@@ -1,3 +1,19 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.jarvanmo.sona">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="com.jarvanmo.sona"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <application
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+
+        <service
+            android:name="com.jarvanmo.sona.service.SonaPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice"
+            android:permission="com.jarvanmo.sona.service.SonaPushService">
+        </service>
+
+    </application>
 </manifest>
