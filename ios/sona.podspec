@@ -14,8 +14,12 @@ sona makes possible using umeng push in flutter.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
+  s.static_framework = true
   s.dependency 'Flutter'
-  
+  s.dependency 'UMCCommon'
+  s.dependency 'UMCAnalytics'
+  s.dependency 'UMCSecurityPlugins'
+
   s.ios.deployment_target = '8.0'
 end
 
