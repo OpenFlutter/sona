@@ -1,5 +1,6 @@
 package com.jarvanmo.sona
 
+import com.igexin.sdk.PushManager
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
@@ -12,6 +13,7 @@ class SonaPlugin(): MethodCallHandler {
     fun registerWith(registrar: Registrar): Unit {
       val channel = MethodChannel(registrar.messenger(), "com.jarvanmo/sona")
       channel.setMethodCallHandler(SonaPlugin())
+
     }
   }
 
