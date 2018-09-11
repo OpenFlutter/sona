@@ -9,7 +9,7 @@ Future<Map<String,dynamic>> register(RegisterGetuiPushModel model) async{
   return await _channel.invokeMethod("register",model.params);
 }
 
-Future<Map<String,dynamic>> clientID() async{
+Future<String> clientID() async{
   return await _channel.invokeMethod("clientID");
 }
 
@@ -21,6 +21,8 @@ Future<Map<String,dynamic>> clientID() async{
 
 
 
+StreamController<String> _receivedClientIDController = new StreamController.broadcast();
+Stream<String> get receivedClientID => _receivedClientIDController.stream;
 
 StreamController<Map<String,dynamic>> _receivedMessageDataController =
 new StreamController.broadcast();
@@ -31,6 +33,8 @@ Stream<Map<String,dynamic>> get receivedMessageData => _receivedMessageDataContr
 Future<dynamic> _handler(MethodCall methodCall) {
   if ("onReceiveMessageData" == methodCall.method) {
     _receivedMessageDataController.add(methodCall.arguments);
+  }else if("onReceiveClientId" == methodCall.method){
+    _receivedClientIDController.add(methodCall.arguments);
   }
 
   return Future.value(true);

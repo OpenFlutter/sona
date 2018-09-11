@@ -9,7 +9,7 @@ import com.jarvanmo.sona.handler.ReceiverHandler
 
 class SonaReceiverService() : GTIntentService() {
     override fun onReceiveMessageData(p0: Context, p1: GTTransmitMessage) {
-       ReceiverHandler.handleReceivedMessageData(p0,p1)
+       ReceiverHandler.handleReceivedMessageData(p1)
     }
 
     override fun onNotificationMessageArrived(p0: Context, p1: GTNotificationMessage?) {
@@ -28,8 +28,8 @@ class SonaReceiverService() : GTIntentService() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onReceiveClientId(p0: Context, p1: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onReceiveClientId(p0: Context, p1: String) {
+      ReceiverHandler.onReceiveClientId(p1)
     }
 
     override fun onReceiveOnlineState(p0: Context, p1: Boolean) {

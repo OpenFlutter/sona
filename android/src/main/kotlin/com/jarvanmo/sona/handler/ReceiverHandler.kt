@@ -9,7 +9,7 @@ internal object ReceiverHandler {
 
     var methodChannel: MethodChannel? = null
 
-    fun handleReceivedMessageData(context: Context, msg: GTTransmitMessage) {
+    fun handleReceivedMessageData(msg: GTTransmitMessage) {
 
         val result = hashMapOf(
                 APP_ID to msg.appid,
@@ -25,6 +25,11 @@ internal object ReceiverHandler {
         }
         methodChannel?.invokeMethod("onReceiveMessageData", result)
 
+    }
+
+
+     fun onReceiveClientId(clientID: String) {
+        methodChannel?.invokeMethod("onReceiveClientId",clientID)
     }
 
 }
