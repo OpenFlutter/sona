@@ -4,14 +4,19 @@
 ///[pushServiceName] only works on Android .GeTui allows you
 /// use custom push service to ensure GeTui works well on some devices.[pushServiceName] is a full name of your
 /// push service in JAVA.[pushServiceName] is not necessary.For details ,see [details](http://docs.getui.com/getui/mobile/android/androidstudio_maven/)
+/// [channel] only works on iOS
 class RegisterGetuiPushModel {
   final String appID;
   final String appKey;
   final String appSecret;
   final bool registerOnAndroid;
   final bool registerOnIOS;
+  final String channel;
 
   final String pushServiceName;
+
+  bool lbsLocationEnable;
+  bool userVerify;
 
   RegisterGetuiPushModel(
       {this.appID,
@@ -19,11 +24,24 @@ class RegisterGetuiPushModel {
       this.appSecret,
       this.registerOnAndroid: true,
       this.registerOnIOS: true,
-      this.pushServiceName});
+      this.channel,
+      this.pushServiceName,
+      this.lbsLocationEnable: false,
+      this.userVerify: false});
 
   get params => _mapInternal();
 
   Map _mapInternal() {
-    return {};
+    return {
+      "appID": appID,
+      "appKey": appKey,
+      "appSecret": appSecret,
+      "registerOnAndroid": registerOnAndroid,
+      "registerOnIOS": registerOnIOS,
+      "channel": channel,
+      "pushServiceName": pushServiceName,
+      "lbsLocationEnable":lbsLocationEnable,
+      "userVerify":userVerify
+    };
   }
 }

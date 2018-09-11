@@ -1,4 +1,7 @@
 #import <Flutter/Flutter.h>
 #import "GTSDK/GeTuiSdk.h"
-@interface SonaPlugin : NSObject<FlutterPlugin>
+#import <PushKit/PushKit.h>
+#import "StringUtil.h"
+
+@interface SonaPlugin : UIResponder <FlutterPlugin,UIApplicationDelegate, PKPushRegistryDelegate, GeTuiSdkDelegate>
 @end
