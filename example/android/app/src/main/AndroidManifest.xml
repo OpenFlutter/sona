@@ -14,6 +14,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
+        android:usesCleartextTraffic="true"
         android:label="sona_example"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -35,5 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
     </application>
 </manifest>
