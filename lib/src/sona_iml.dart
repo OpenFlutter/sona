@@ -15,6 +15,12 @@ Future<String> clientID() async {
   return await _channel.invokeMethod("clientID");
 }
 
+Future turnOnPush() async{
+  return await _channel.invokeMethod("turnOnPush",null);
+}
+Future turnOffPush() async{
+  return await _channel.invokeMethod("turnOffPush",null);
+}
 StreamController<String> _receivedClientIDController =
     new StreamController.broadcast();
 

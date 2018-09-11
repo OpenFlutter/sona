@@ -28,6 +28,15 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
                 val clientID = PushManager.getInstance().getClientid(registrar.context().applicationContext)
                 result.success(clientID)
             }
+
+            "turnOnPush" == call.method -> {
+                PushManager.getInstance().turnOnPush(registrar.context().applicationContext)
+                result.success(true)
+            }
+            "turnOffPush" == call.method -> {
+                PushManager.getInstance().turnOffPush(registrar.context().applicationContext)
+                result.success(true)
+            }
             else -> result.notImplemented()
         }
     }
