@@ -32,4 +32,8 @@ internal object ReceiverHandler {
         methodChannel?.invokeMethod("onReceiveClientId",clientID)
     }
 
+    fun  onReceiveOnlineState(isOnline:Boolean){
+        methodChannel?.invokeMethod("onReceiveOnlineState",isOnline)
+    }
+
 }

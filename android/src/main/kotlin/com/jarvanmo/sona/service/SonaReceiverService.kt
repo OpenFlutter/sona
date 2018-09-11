@@ -33,6 +33,6 @@ class SonaReceiverService() : GTIntentService() {
     }
 
     override fun onReceiveOnlineState(p0: Context, p1: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      ReceiverHandler.onReceiveOnlineState(p1)
     }
 }
