@@ -1,12 +1,9 @@
 package com.jarvanmo.sona
 
-import android.app.Service
 import com.igexin.sdk.PushManager
 import com.jarvanmo.sona.constants.ANDROID
 import com.jarvanmo.sona.constants.PLATFORM
-import com.jarvanmo.sona.constants.RESULT
 import com.jarvanmo.sona.handler.RegisterHandler
-import com.jarvanmo.sona.service.SonaPushService
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -26,10 +23,16 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
     private val registerHandler:RegisterHandler = RegisterHandler( registrar)
 
     override fun onMethodCall(call: MethodCall, result: Result): Unit {
-        if (call.method == "register") {
-            registerHandler.register(call, result)
-        } else {
-            result.notImplemented()
+        when {
+            call.method == "register" -> registerHandler.register(call, result)
+            "clientID"== call.method -> {
+                val clientID =PushManager.getInstance().getClientid(registrar.context().applicationContext)
+                result.success({
+                    PLATFORM to ANDROID
+                    "clientID" to clientID
+                })
+            }
+            else -> result.notImplemented()
         }
     }
 

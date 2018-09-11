@@ -15,5 +15,6 @@
             android:permission="com.jarvanmo.sona.service.SonaPushService">
         </service>
 
+        <service android:name=".service.SonaReceiverService"/>
     </application>
 </manifest>

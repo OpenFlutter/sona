@@ -6,6 +6,7 @@ import com.jarvanmo.sona.constants.ANDROID
 import com.jarvanmo.sona.constants.PLATFORM
 import com.jarvanmo.sona.constants.RESULT
 import com.jarvanmo.sona.service.SonaPushService
+import com.jarvanmo.sona.service.SonaReceiverService
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.PluginRegistry.Registrar
@@ -27,6 +28,7 @@ internal class RegisterHandler(private val registrar: Registrar) {
         var serviceClass: Class<out Service> = SonaPushService::class.java
         if (serviceName.isNullOrBlank()) {
             PushManager.getInstance().initialize(registrar.context().applicationContext, serviceClass)
+            PushManager.getInstance().registerPushIntentService(registrar.context().applicationContext, SonaReceiverService::class.java)
             result.success({
                 PLATFORM to ANDROID
                 RESULT to true
