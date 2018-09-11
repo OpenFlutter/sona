@@ -7,7 +7,7 @@ import com.igexin.sdk.message.GTNotificationMessage
 import com.igexin.sdk.message.GTTransmitMessage
 import com.jarvanmo.sona.handler.ReceiverHandler
 
-class SonaReceiverService : GTIntentService() {
+class SonaReceiverService() : GTIntentService() {
     override fun onReceiveMessageData(p0: Context, p1: GTTransmitMessage) {
        ReceiverHandler.handleReceivedMessageData(p0,p1)
     }

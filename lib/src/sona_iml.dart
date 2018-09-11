@@ -25,7 +25,7 @@ Future<Map<String,dynamic>> clientID() async{
 StreamController<Map<String,dynamic>> _receivedMessageDataController =
 new StreamController.broadcast();
 
-/// listen received data from getui
+/// listen data from getui
 Stream<Map<String,dynamic>> get receivedMessageData => _receivedMessageDataController.stream;
 
 Future<dynamic> _handler(MethodCall methodCall) {
