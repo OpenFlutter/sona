@@ -27,6 +27,8 @@ BOOL  isRgisterGetuiBySona = YES;
   } else {
     result(FlutterMethodNotImplemented);
   }
+
+
 }
 
 @end
