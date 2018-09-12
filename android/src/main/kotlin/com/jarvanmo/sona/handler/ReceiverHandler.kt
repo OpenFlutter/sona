@@ -5,7 +5,7 @@ import com.igexin.sdk.message.GTTransmitMessage
 import com.jarvanmo.sona.constants.*
 import io.flutter.plugin.common.MethodChannel
 
-internal object ReceiverHandler {
+object ReceiverHandler {
 
     var methodChannel: MethodChannel? = null
 
