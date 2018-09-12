@@ -62,9 +62,11 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
         val alias :String= call.argument(ALIAS)
         val sn:String? = call.argument("sn")
         if(sn.isNullOrBlank()) {
-            PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"))
+            val ok = PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"))
+            result.success(ok)
         }else{
-            PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"),sn)
+            val ok =  PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"),sn)
+            result.success(ok)
         }
     }
 
