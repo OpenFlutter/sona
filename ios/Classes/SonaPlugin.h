@@ -3,5 +3,5 @@
 #import <PushKit/PushKit.h>
 #import "StringUtil.h"
 
-@interface SonaPlugin : UIResponder <FlutterPlugin,UIApplicationDelegate, PKPushRegistryDelegate, GeTuiSdkDelegate>
+@interface SonaPlugin : UIResponder <FlutterPlugin, PKPushRegistryDelegate, GeTuiSdkDelegate>
 @end
