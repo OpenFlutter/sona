@@ -23,6 +23,19 @@ Future turnOffPush() async{
   return await _channel.invokeMethod("turnOffPush",null);
 }
 
+Future bindAlias(String alias,{String sn})async{
+  if(alias == null ){
+    throw Exception("alias can't be null");
+  }
+  return await _channel.invokeMethod("bindAlias",{"alias":alias,"sn":sn});
+}
+
+Future unBindAlias(String alias,{String sn,bool isSeft})async{
+  if(alias == null ){
+    throw Exception("alias can't be null");
+  }
+  return await _channel.invokeMethod("unBindAlias",{"alias":alias,"sn":sn,"isSeft":isSeft});
+}
 
 StreamController<String> _receivedClientIDController =
     new StreamController.broadcast();
@@ -55,7 +68,3 @@ Future<dynamic> _handler(MethodCall methodCall) {
   return Future.value(true);
 }
 
-class Sona{
-  Stream<Map<dynamic, dynamic>> get receivedMessageData =>
-      _receivedMessageDataController.stream;
-}

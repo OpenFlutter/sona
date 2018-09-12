@@ -1,6 +1,7 @@
 package com.jarvanmo.sona
 
 import com.igexin.sdk.PushManager
+import com.jarvanmo.sona.constants.ALIAS
 import com.jarvanmo.sona.handler.ReceiverHandler
 import com.jarvanmo.sona.handler.RegisterHandler
 import io.flutter.plugin.common.MethodCall
@@ -37,9 +38,34 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
                 PushManager.getInstance().turnOffPush(registrar.context().applicationContext)
                 result.success(true)
             }
+
+            "bindAlias" == call.method ->bindAlias(call,result)
+            "unBindAlias"  == call.method -> unBindAlias(call,result)
             else -> result.notImplemented()
         }
     }
 
+    private fun bindAlias(call: MethodCall, result: Result){
+        val sn:String? = call.argument("sn")
+        if(sn.isNullOrBlank()){
+           val ok = PushManager.getInstance().bindAlias(registrar.context().applicationContext,call.argument(ALIAS))
+            result.success(ok)
+        }else{
+            val ok =PushManager.getInstance().bindAlias(registrar.context().applicationContext,call.argument(ALIAS),sn)
+            result.success(ok)
+        }
+
+    }
+
+    private fun unBindAlias(call: MethodCall, result: Result){
+        val context = registrar.context().applicationContext
+        val alias :String= call.argument(ALIAS)
+        val sn:String? = call.argument("sn")
+        if(sn.isNullOrBlank()) {
+            PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"))
+        }else{
+            PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSeft"),sn)
+        }
+    }
 
 }

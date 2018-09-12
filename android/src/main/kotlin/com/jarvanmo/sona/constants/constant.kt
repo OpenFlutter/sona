@@ -11,3 +11,4 @@ internal const val PAYLOAD ="payload"
 internal const val PKG_NAME ="pkgName"
 internal const val CLIENT_ID = "clientID"
 
+internal const val ALIAS = "alias"

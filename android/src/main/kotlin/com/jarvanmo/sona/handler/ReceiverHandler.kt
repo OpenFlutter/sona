@@ -1,6 +1,6 @@
 package com.jarvanmo.sona.handler
 
-import android.content.Context
+
 import com.igexin.sdk.message.GTTransmitMessage
 import com.jarvanmo.sona.constants.*
 import io.flutter.plugin.common.MethodChannel
