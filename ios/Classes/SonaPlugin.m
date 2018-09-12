@@ -81,7 +81,7 @@ BOOL isRgisterGetuiBySona = YES;
 
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
 
-
+    [GeTuiSdk setPushModeForOff:NO];
     // 注册APNs - custom method - 开发者自定义的方法
     [self registerRemoteNotification];
 
@@ -250,6 +250,7 @@ BOOL isRgisterGetuiBySona = YES;
 
     };
 
+
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:commonResult];
     // 数据转换
     NSString *payloadMsg = nil;
@@ -258,7 +259,7 @@ BOOL isRgisterGetuiBySona = YES;
         result[@"payload"] = payloadMsg;
     }
 
-    [methodChannel invokeMethod:@"" arguments:result];
+    [methodChannel invokeMethod:@"onReceiveMessageData" arguments:result];
 }
 
 /** SDK收到sendMessage消息回调 */

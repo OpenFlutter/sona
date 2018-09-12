@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:sona/sona.dart';
+import 'package:sona/sona.dart' as sona;
 
 void main() => runApp(new MyApp());
 
@@ -12,31 +12,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String _result = 'Unknown';
+  sona.Sona realSona = new sona.Sona();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    sona.register(sona.RegisterGetuiPushModel(
+        appID: "your app id",
+        appKey: "your app key",
+        appSecret: "app secret"
+    ));
+//    sona.receivedMessageData.listen(_receiveData,onError: (error){
+//      print("erro ");
+//    },onDone: (){
+//      print("done");
+//    });
+
+    realSona.receivedMessageData.listen(_receiveData,onError: (err){
+      print("err");
+    });
+
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = "";
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  _receiveData(dynamic data){
 
     setState(() {
-      _platformVersion = platformVersion;
+      _result = data.toString();
     });
   }
 
@@ -48,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: new Center(
-          child: new Text('Running on: $_platformVersion\n'),
+          child: new Text('messge: $_result\n'),
         ),
       ),
     );
