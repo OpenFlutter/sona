@@ -28,7 +28,7 @@ BOOL isRgisterGetuiBySona = YES;
 }
 
 
-- (instancetype)initInternal:(FlutterMethodChannel *) channel {
+- (instancetype)initInternal:(FlutterMethodChannel *)channel {
     self = [super init];
     if (self) {
         methodChannel = channel;
@@ -41,11 +41,19 @@ BOOL isRgisterGetuiBySona = YES;
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
     if ([@"register" isEqualToString:call.method]) {
         [self registerGetui:call result:result];
+    } else if ([@"turnOnPush" isEqualToString:call.method]) {
+        [self turnOnPush:call result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
 
 
+}
+
+- (void)turnOnPush:(FlutterMethodCall *)call result:(FlutterResult)result {
+    BOOL isOn = [call.arguments boolValue];
+    [GeTuiSdk setPushModeForOff:!isOn];
+    result(@YES);
 }
 
 - (void)registerGetui:(FlutterMethodCall *)call result:(FlutterResult)result {
@@ -151,7 +159,7 @@ BOOL isRgisterGetuiBySona = YES;
 #pragma mark - APP运行中接收到通知(推送)处理 - iOS 10以下版本收到推送
 
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
-- (BOOL) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+- (BOOL)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
 
     // [ GTSdk ]：将收到的APNs信息传给个推统计
     [GeTuiSdk handleRemoteNotification:userInfo];
@@ -243,9 +251,9 @@ BOOL isRgisterGetuiBySona = YES;
 //    [GeTuiSdk sendFeedbackMessage:90001 andTaskId:taskId andMsgId:msgId];
 
     NSDictionary *commonResult = @{
-            @"appID":appId,
-            @"taskID":taskId,
-            @"messageID":msgId,
+            @"appID": appId,
+            @"taskID": taskId,
+            @"messageID": msgId,
             @"offLine": @(offLine),
 
     };
