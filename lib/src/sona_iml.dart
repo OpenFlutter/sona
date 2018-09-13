@@ -15,13 +15,11 @@ Future<String> clientID() async {
   return await _channel.invokeMethod("clientID");
 }
 
-Future turnOnPush() async{
-  return await _channel.invokeMethod("turnOnPush",null);
+Future turnOnPush({bool isOn:true}) async{
+  return await _channel.invokeMethod("turnOnPush",isOn);
 }
 
-Future turnOffPush() async{
-  return await _channel.invokeMethod("turnOffPush",null);
-}
+
 
 Future bindAlias(String alias,{String sn})async{
   if(alias == null ){

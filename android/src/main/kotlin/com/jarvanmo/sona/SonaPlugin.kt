@@ -31,13 +31,16 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
             }
 
             "turnOnPush" == call.method -> {
-                PushManager.getInstance().turnOnPush(registrar.context().applicationContext)
+                val isOn:Boolean = call.arguments()
+                if (isOn) {
+                    PushManager.getInstance().turnOnPush(registrar.context().applicationContext)
+                }else {
+                    PushManager.getInstance().turnOffPush(registrar.context().applicationContext)
+                }
+
                 result.success(true)
             }
-            "turnOffPush" == call.method -> {
-                PushManager.getInstance().turnOffPush(registrar.context().applicationContext)
-                result.success(true)
-            }
+
 
             "bindAlias" == call.method ->bindAlias(call,result)
             "unBindAlias"  == call.method -> unBindAlias(call,result)
