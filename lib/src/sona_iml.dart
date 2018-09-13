@@ -21,18 +21,18 @@ Future turnOnPush({bool isOn:true}) async{
 
 
 
-Future bindAlias(String alias,{String sn})async{
+Future bindAlias(String alias,{String sequenceNum})async{
   if(alias == null ){
     throw Exception("alias can't be null");
   }
-  return await _channel.invokeMethod("bindAlias",{"alias":alias,"sn":sn});
+  return await _channel.invokeMethod("bindAlias",{"alias":alias,"sequenceNum":sequenceNum});
 }
 
-Future unBindAlias(String alias,{String sn,bool isSeft})async{
+Future unBindAlias(String alias,{String sn,bool isSelf})async{
   if(alias == null ){
     throw Exception("alias can't be null");
   }
-  return await _channel.invokeMethod("unBindAlias",{"alias":alias,"sn":sn,"isSeft":isSeft});
+  return await _channel.invokeMethod("unBindAlias",{"alias":alias,"sn":sn,"isSelf":isSelf});
 }
 
 StreamController<String> _receivedClientIDController =

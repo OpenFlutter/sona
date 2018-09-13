@@ -18,6 +18,7 @@
 FlutterMethodChannel *methodChannel;
 
 BOOL isRgisterGetuiBySona = YES;
+const NSString *keyAlias = @"alias";
 
 + (BOOL)registerGetuiPushBySona {
     return isRgisterGetuiBySona;
@@ -43,11 +44,52 @@ BOOL isRgisterGetuiBySona = YES;
         [self registerGetui:call result:result];
     } else if ([@"turnOnPush" isEqualToString:call.method]) {
         [self turnOnPush:call result:result];
-    } else {
+    } else if ([@"bindAlias" isEqualToString:call.method]) {
+        [self bindAlias:call result:result];
+    } else if([@"unBindAlias" isEqualToString:call.method]){
+        [self unBindAlias:call result:result];
+    }else{
         result(FlutterMethodNotImplemented);
     }
 
 
+}
+
+- (void)bindAlias:(FlutterMethodCall *)call result:(FlutterResult)result {
+    NSString *aliasFromSona = call.arguments[keyAlias];
+
+
+    NSString *sn = call.arguments[@"sequenceNum"];
+
+    if([StringUtil isBlank:sn]){
+        NSDate *currentDate = [NSDate date];
+        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
+        NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
+        sn = timeString;
+    }
+
+    [GeTuiSdk bindAlias:aliasFromSona andSequenceNum:sn];
+
+    result(@YES);
+}
+
+-(void)unBindAlias:(FlutterMethodCall *)call result:(FlutterResult)result{
+    NSString *aliasFromSona = call.arguments[keyAlias];
+
+
+    NSString *sn = call.arguments[@"sequenceNum"];
+
+    if([StringUtil isBlank:sn]){
+        NSDate *currentDate = [NSDate date];
+        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
+        NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
+        sn = timeString;
+    }
+
+    BOOL isSelf = [call.arguments[@"isSelf"] boolValue];
+    [GeTuiSdk unbindAlias:aliasFromSona andSequenceNum:sn andIsSelf:isSelf];
+
+    result(@YES);
 }
 
 - (void)turnOnPush:(FlutterMethodCall *)call result:(FlutterResult)result {
