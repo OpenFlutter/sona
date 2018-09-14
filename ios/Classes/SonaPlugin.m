@@ -41,7 +41,7 @@ const NSString *keyAlias = @"alias";
     return instance;
 }
 
-- (void)setMethodChannel:(FlutterMethodChannel *) channel{
+- (void)setMethodChannel:(FlutterMethodChannel *)channel {
     methodChannel = channel;
 }
 
@@ -52,9 +52,9 @@ const NSString *keyAlias = @"alias";
         [self turnOnPush:call result:result];
     } else if ([@"bindAlias" isEqualToString:call.method]) {
         [self bindAlias:call result:result];
-    } else if([@"unBindAlias" isEqualToString:call.method]){
+    } else if ([@"unBindAlias" isEqualToString:call.method]) {
         [self unBindAlias:call result:result];
-    }else{
+    } else {
         result(FlutterMethodNotImplemented);
     }
 
@@ -67,9 +67,9 @@ const NSString *keyAlias = @"alias";
 
     NSString *sn = call.arguments[@"sequenceNum"];
 
-    if([StringUtil isBlank:sn]){
+    if ([StringUtil isBlank:sn]) {
         NSDate *currentDate = [NSDate date];
-        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
+        NSTimeInterval time = [currentDate timeIntervalSince1970] * 1000;// *1000 是精确到毫秒，不乘就是精确到秒
         NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
         sn = timeString;
     }
@@ -79,15 +79,15 @@ const NSString *keyAlias = @"alias";
     result(@YES);
 }
 
--(void)unBindAlias:(FlutterMethodCall *)call result:(FlutterResult)result{
+- (void)unBindAlias:(FlutterMethodCall *)call result:(FlutterResult)result {
     NSString *aliasFromSona = call.arguments[keyAlias];
 
 
     NSString *sn = call.arguments[@"sequenceNum"];
 
-    if([StringUtil isBlank:sn]){
+    if ([StringUtil isBlank:sn]) {
         NSDate *currentDate = [NSDate date];
-        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;
+        NSTimeInterval time = [currentDate timeIntervalSince1970] * 1000;
         NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
         sn = timeString;
     }
@@ -329,6 +329,18 @@ const NSString *keyAlias = @"alias";
 - (void)GeTuiSDkDidNotifySdkState:(SdkStatus)aStatus {
     // 通知SDK运行状态
     NSLog(@"\n>>[GTSdk SdkState]:%u\n\n", aStatus);
+
+    NSString *argument = @"STARTED";
+    if (aStatus == SdkStatusStarting) {
+        argument = @"STARTING";
+    } else if (aStatus == SdkStatusOffline) {
+        argument = @"OFFLINE";
+    } else if (aStatus == SdkStatusStoped) {
+        argument = @"STOPPED";
+    }
+
+    [methodChannel invokeMethod:@"onReceiveOnlineState" arguments:argument];
+
 }
 
 /** SDK设置推送模式回调 */

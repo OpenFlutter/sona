@@ -28,12 +28,17 @@ object ReceiverHandler {
     }
 
 
-     fun onReceiveClientId(clientID: String) {
-        methodChannel?.invokeMethod("onReceiveClientId",clientID)
+    fun onReceiveClientId(clientID: String) {
+        methodChannel?.invokeMethod("onReceiveClientId", clientID)
     }
 
-    fun  onReceiveOnlineState(isOnline:Boolean){
-        methodChannel?.invokeMethod("onReceiveOnlineState",isOnline)
+    fun onReceiveOnlineState(isOnline: Boolean) {
+        if (isOnline) {
+            methodChannel?.invokeMethod("onReceiveOnlineState", "STARTED")
+        } else {
+            methodChannel?.invokeMethod("onReceiveOnlineState","OFFLINE")
+        }
+
     }
 
 }
