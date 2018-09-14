@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _result = 'Unknown';
-  sona.Sona realSona = new sona.Sona();
+
 
   @override
   void initState() {
@@ -29,9 +29,7 @@ class _MyAppState extends State<MyApp> {
 //      print("done");
 //    });
 
-    realSona.receivedMessageData.listen(_receiveData,onError: (err){
-      print("err");
-    });
+
 
   }
 
