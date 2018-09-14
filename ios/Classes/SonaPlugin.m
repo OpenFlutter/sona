@@ -11,7 +11,8 @@
     FlutterMethodChannel *channel = [FlutterMethodChannel
             methodChannelWithName:@"com.jarvanmo/sona"
                   binaryMessenger:[registrar messenger]];
-    SonaPlugin *instance = [[SonaPlugin alloc] initInternal:channel];
+    SonaPlugin *instance = [SonaPlugin sonaPlugin];
+    [instance setMethodChannel:channel];
     [registrar addMethodCallDelegate:instance channel:channel];
 }
 
@@ -28,16 +29,21 @@ const NSString *keyAlias = @"alias";
     isRgisterGetuiBySona = registerGetuiPushBySona;
 }
 
+#pragma mark - LifeCycle
 
-- (instancetype)initInternal:(FlutterMethodChannel *)channel {
-    self = [super init];
-    if (self) {
-        methodChannel = channel;
-    }
++ (instancetype)sonaPlugin {
+    static dispatch_once_t onceToken;
+    static SonaPlugin *instance;
+    dispatch_once(&onceToken, ^{
+        instance = [[SonaPlugin alloc] init];
 
-    return self;
+    });
+    return instance;
 }
 
+- (void)setMethodChannel:(FlutterMethodChannel *) channel{
+    methodChannel = channel;
+}
 
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
     if ([@"register" isEqualToString:call.method]) {
@@ -81,7 +87,7 @@ const NSString *keyAlias = @"alias";
 
     if([StringUtil isBlank:sn]){
         NSDate *currentDate = [NSDate date];
-        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
+        NSTimeInterval time=[currentDate timeIntervalSince1970]*1000;
         NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
         sn = timeString;
     }

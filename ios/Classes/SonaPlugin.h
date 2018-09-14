@@ -4,4 +4,5 @@
 #import "StringUtil.h"
 
 @interface SonaPlugin : UIResponder <FlutterPlugin, PKPushRegistryDelegate, GeTuiSdkDelegate>
++ (instancetype) sonaPlugin;
 @end
