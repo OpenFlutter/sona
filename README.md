@@ -18,7 +18,18 @@ sona makes possible using getui push in flutter.
     ));
 ```
 `appID`，`appKey`，`appSecret`目前仅在`iOS`上生效，因为在`android`上，这些配置是在`build.gradle`中完成的，所以使用`Sona`之前
-一定要在`android`工程配置`appID`、`appKey`以及`appSecret`。
+一定要在`android`工程配置`appID`、`appKey`以及`appSecret`：
+```
+defaultConfig {
+        //some configrations
+
+        manifestPlaceholders = [
+                GETUI_APP_ID : "APP_ID",
+                GETUI_APP_KEY : "APP_KEY",
+                GETUI_APP_SECRET : "APP_SECRET"
+        ]
+    }
+```
 
 ## 接收透传
 通过监听`receivedMessageData`可以获取个推推送的透传数据：
