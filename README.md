@@ -2,9 +2,6 @@
 
 sona makes possible using getui push in flutter.
 
-## Getting Started
+## 简介
+`Sona`是个推推送SDK在`Flutter`上的实现。通过`Sona`,可以在Flutter上轻松使用个推推送。
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
-
-For help on editing plugin code, view the [documentation](https://flutter.io/developing-packages/#edit-plugin-package).
