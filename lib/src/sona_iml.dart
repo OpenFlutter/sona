@@ -45,8 +45,8 @@ final StreamController<Map<dynamic, dynamic>> _receivedMessageDataController =
     new StreamController.broadcast();
 
 ///// listen data from getui
-//Stream<Map<String, dynamic>> get receivedMessageData =>
-//    _receivedMessageDataController.stream;
+Stream<Map<String, dynamic>> get receivedMessageData =>
+    _receivedMessageDataController.stream;
 
 StreamController<GTSdkStatus> _receivedSdkStatusController =
     new StreamController.broadcast();
