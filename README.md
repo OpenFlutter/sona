@@ -1,4 +1,4 @@
-# sona
+![logo](./arts/logo.png)
 
 sona makes possible using getui push in flutter.
 
