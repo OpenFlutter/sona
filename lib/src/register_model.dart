@@ -40,8 +40,8 @@ class RegisterGetuiPushModel {
       "registerOnIOS": registerOnIOS,
       "channel": channel,
       "pushServiceName": pushServiceName,
-      "lbsLocationEnable":lbsLocationEnable,
-      "userVerify":userVerify
+      "lbsLocationEnable": lbsLocationEnable,
+      "userVerify": userVerify
     };
   }
 }
