@@ -38,4 +38,12 @@ defaultConfig {
       //接收到透传
       });
 ```
+其中*payload*为`Map<dynamic,dynamic>`根据平台不台，其包含的key也不同：
+- appID:String
+- taskID:String
+- messageID:String
+- offLine:bool
+- payload:String or null
+- pkgName:String,仅安卓平台
+
 
