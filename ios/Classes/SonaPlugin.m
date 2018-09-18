@@ -54,7 +54,9 @@ const NSString *keyAlias = @"alias";
         [self bindAlias:call result:result];
     } else if ([@"unBindAlias" isEqualToString:call.method]) {
         [self unBindAlias:call result:result];
-    } else {
+    } else if([@"clientID" isEqualToString:call.method]){
+        [self getClientID:result];
+    } else{
         result(FlutterMethodNotImplemented);
     }
 
@@ -143,6 +145,10 @@ const NSString *keyAlias = @"alias";
 
     // 注册VOIP
     [self voipRegistration];
+}
+
+-(void) getClientID:(FlutterResult)result {
+    result([GeTuiSdk clientId]);
 }
 
 #pragma mark - 用户通知(推送) _自定义方法
@@ -340,6 +346,7 @@ const NSString *keyAlias = @"alias";
     }
 
     [methodChannel invokeMethod:@"onReceiveOnlineState" arguments:argument];
+
 
 }
 
