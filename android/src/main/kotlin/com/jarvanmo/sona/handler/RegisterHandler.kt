@@ -17,10 +17,8 @@ internal class RegisterHandler(private val registrar: Registrar) {
     fun register(call: MethodCall, result: MethodChannel.Result) {
         val needRegister: Boolean = call.argument("registerOnAndroid")
         if (!needRegister) {
-            result.success({
-                PLATFORM to ANDROID
-                RESULT to true
-            })
+            result.success(mapOf( PLATFORM to ANDROID,
+                    RESULT to true))
             return
         }
 
@@ -29,20 +27,20 @@ internal class RegisterHandler(private val registrar: Registrar) {
         if (serviceName.isNullOrBlank()) {
             PushManager.getInstance().initialize(registrar.context().applicationContext, serviceClass)
             PushManager.getInstance().registerPushIntentService(registrar.context().applicationContext, SonaReceiverService::class.java)
-            result.success({
-                PLATFORM to ANDROID
+            result.success(mapOf(
+                PLATFORM to ANDROID,
                 RESULT to true
-            })
+            ))
             return
         }
 
         try {
             serviceClass = Class.forName(serviceName) as Class<out Service>
             PushManager.getInstance().initialize(registrar.context().applicationContext, serviceClass)
-            result.success({
-                PLATFORM to ANDROID
+            result.success(mapOf(
+                PLATFORM to ANDROID,
                 RESULT to true
-            })
+            ))
         } catch (e: ClassNotFoundException) {
             result.error("ClassNotFoundException","Can't find class $serviceName.stacktrace from android:\n ${e.message}",serviceName)
         } catch (e: ClassCastException) {

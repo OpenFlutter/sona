@@ -22,7 +22,9 @@ class _MyAppState extends State<MyApp> {
         appID: "your app id",
         appKey: "your app key",
         appSecret: "app secret"
-    ));
+    )).then((data){
+      print(data.runtimeType.toString());
+    });
 //    sona.receivedMessageData.listen(_receiveData,onError: (error){
 //      print("erro ");
 //    },onDone: (){
