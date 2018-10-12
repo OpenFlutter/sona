@@ -15,7 +15,7 @@ internal class RegisterHandler(private val registrar: Registrar) {
 
 
     fun register(call: MethodCall, result: MethodChannel.Result) {
-        val needRegister: Boolean = call.argument("registerOnAndroid")
+        val needRegister = call.argument<Boolean>("registerOnAndroid")?:true
         if (!needRegister) {
             result.success(mapOf( PLATFORM to ANDROID,
                     RESULT to true))
