@@ -47,7 +47,7 @@ const NSString *keyAlias = @"alias";
 }
 
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
-    if ([@"register" isEqualToString:call.method]) {
+    if ([@"registerGeTui" isEqualToString:call.method]) {
         [self registerGetui:call result:result];
     } else if ([@"turnOnPush" isEqualToString:call.method]) {
         [self turnOnPush:call result:result];
