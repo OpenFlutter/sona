@@ -1,4 +1,7 @@
 ## 0.0.3
+* 修复iOS与其他库共存时，会有重复的错误
+
+## 0.0.3
 * 升级android部分所使用的技术
 * 修复在flutter-0.9.7+上的*Expected type mismatch*
 
