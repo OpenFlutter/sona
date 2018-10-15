@@ -56,8 +56,6 @@ Stream<GTSdkStatus> get receivedSdkStatus =>
 
 Future<dynamic> _handler(MethodCall methodCall) {
   if ("onReceiveMessageData" == methodCall.method) {
-    print(
-        "${methodCall.arguments} -arguments ${methodCall.arguments.runtimeType}");
     _receivedMessageDataController.add(methodCall.arguments);
   } else if ("onReceiveClientId" == methodCall.method) {
     _receivedClientIDController.add(methodCall.arguments);

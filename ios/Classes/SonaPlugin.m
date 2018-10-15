@@ -17,7 +17,7 @@
     [registrar addMethodCallDelegate:instance channel:channel];
 }
 
-FlutterMethodChannel *methodChannel;
+FlutterMethodChannel *sonMethodChannel;
 
 BOOL isRgisterGetuiBySona = YES;
 const NSString *keyAlias = @"alias";
@@ -43,7 +43,7 @@ const NSString *keyAlias = @"alias";
 }
 
 - (void)setMethodChannel:(FlutterMethodChannel *)channel {
-    methodChannel = channel;
+    sonMethodChannel = channel;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
@@ -322,7 +322,7 @@ const NSString *keyAlias = @"alias";
         result[@"payload"] = payloadMsg;
     }
 
-    [methodChannel invokeMethod:@"onReceiveMessageData" arguments:result];
+    [sonMethodChannel invokeMethod:@"onReceiveMessageData" arguments:result];
 }
 
 /** SDK收到sendMessage消息回调 */
@@ -346,7 +346,7 @@ const NSString *keyAlias = @"alias";
         argument = @"STOPPED";
     }
 
-    [methodChannel invokeMethod:@"onReceiveOnlineState" arguments:argument];
+    [sonMethodChannel invokeMethod:@"onReceiveOnlineState" arguments:argument];
 
 
 }
