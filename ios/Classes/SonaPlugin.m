@@ -1,5 +1,5 @@
 #import "SonaPlugin.h"
-#import "StringUtil.h"
+#import "SonaStringUtil.h"
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 
@@ -70,7 +70,7 @@ const NSString *keyAlias = @"alias";
 
     NSString *sn = call.arguments[@"sequenceNum"];
 
-    if ([StringUtil isBlank:sn]) {
+    if ([SonaStringUtil isBlank:sn]) {
         NSDate *currentDate = [NSDate date];
         NSTimeInterval time = [currentDate timeIntervalSince1970] * 1000;// *1000 是精确到毫秒，不乘就是精确到秒
         NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
@@ -88,7 +88,7 @@ const NSString *keyAlias = @"alias";
 
     NSString *sn = call.arguments[@"sequenceNum"];
 
-    if ([StringUtil isBlank:sn]) {
+    if ([SonaStringUtil isBlank:sn]) {
         NSDate *currentDate = [NSDate date];
         NSTimeInterval time = [currentDate timeIntervalSince1970] * 1000;
         NSString *timeString = [NSString stringWithFormat:@"bindAlias_%.0f", time];
@@ -121,7 +121,7 @@ const NSString *keyAlias = @"alias";
     NSString *kGtAppId = call.arguments[@"appID"];
     NSString *kGtAppKey = call.arguments[@"appKey"];
     NSString *kGtAppSecret = call.arguments[@"appSecret"];
-    if ([StringUtil isBlank:kGtAppId] || [StringUtil isBlank:kGtAppKey] || [StringUtil isBlank:kGtAppSecret]) {
+    if ([SonaStringUtil isBlank:kGtAppId] || [SonaStringUtil isBlank:kGtAppKey] || [SonaStringUtil isBlank:kGtAppSecret]) {
         result([FlutterError errorWithCode:@"invalid appID,appKey,or appSecret"
                                    message:@"these params can't be blank,have a check please!"
                                    details:[NSString stringWithFormat:@"appID=%@,appKey=%@,appSecret=%@", kGtAppId, kGtAppKey, kGtAppSecret]]);
@@ -129,7 +129,7 @@ const NSString *keyAlias = @"alias";
     }
 
     NSString *channel = call.arguments[@"channel"];
-    if (![StringUtil isBlank:channel]) {
+    if (![SonaStringUtil isBlank:channel]) {
         [GeTuiSdk setChannelId:channel];
     }
 

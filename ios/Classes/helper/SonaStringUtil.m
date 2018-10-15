@@ -2,10 +2,10 @@
 // Created by mo on 2018/8/15.
 //
 
-#import "StringUtil.h"
+#import "SonaStringUtil.h"
 
 
-@implementation StringUtil
+@implementation SonaStringUtil
 
 + (BOOL) isBlank:(NSString *)string {
 
