@@ -9,7 +9,7 @@ final MethodChannel _channel = const MethodChannel('com.jarvanmo/sona')
   ..setMethodCallHandler(_handler);
 
 Future<Map<dynamic, dynamic>> register(RegisterGetuiPushModel model) async {
-  return await _channel.invokeMethod("register", model.params);
+  return await _channel.invokeMethod("registerGeTui", model.params);
 }
 
 Future<String> clientID() async {

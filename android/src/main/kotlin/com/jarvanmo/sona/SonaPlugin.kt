@@ -24,7 +24,7 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
 
     override fun onMethodCall(call: MethodCall, result: Result): Unit {
         when {
-            call.method == "register" -> registerHandler.register(call, result)
+            call.method == "registerGeTui" -> registerHandler.register(call, result)
             "clientID" == call.method -> {
                 val clientID = PushManager.getInstance().getClientid(registrar.context().applicationContext)
                 result.success(clientID)
