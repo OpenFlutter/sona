@@ -10,5 +10,6 @@ internal const val MESSAGE_ID ="messageID"
 internal const val PAYLOAD ="payload"
 internal const val PKG_NAME ="pkgName"
 internal const val CLIENT_ID = "clientID"
-
+internal const val CONTENT = "content"
+internal const val TITLE ="title"
 internal const val ALIAS = "alias"

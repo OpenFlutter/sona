@@ -62,13 +62,13 @@ class SonaPlugin(private val registrar: Registrar) : MethodCallHandler {
 
     private fun unBindAlias(call: MethodCall, result: Result){
         val context = registrar.context().applicationContext
-        val alias :String= call.argument(ALIAS)
+        val alias = call.argument<String>(ALIAS)
         val sn:String? = call.argument("sequenceNum")
         if(sn.isNullOrBlank()) {
-            val ok = PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSelf"))
+            val ok = PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSelf")?:false)
             result.success(ok)
         }else{
-            val ok =  PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSelf"),sn)
+            val ok =  PushManager.getInstance().unBindAlias(context,alias,call.argument<Boolean>("isSelf")?:false,sn)
             result.success(ok)
         }
     }

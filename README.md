@@ -7,7 +7,7 @@ sona makes possible using getui push in flutter.
 使用`Sona`之前，请到个推官网进行应用注册。
 
 ## 所用到的技术
-android上：
+android使用到了*kotlin-1.2.71*：
 ```groovy
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -22,10 +22,10 @@ iOS上：
 ```
 Flutter上：
 ```dart
-Flutter 0.8.2 • channel beta • https://github.com/flutter/flutter.git
-Framework • revision 5ab9e70727 (11 days ago) • 2018-09-07 12:33:05 -0700
-Engine • revision 58a1894a1c
-Tools • Dart 2.1.0-dev.3.1.flutter-760a9690c2
+Flutter 0.9.4 • channel beta • https://github.com/flutter/flutter.git
+Framework • revision f37c235c32 (2 weeks ago) • 2018-09-25 17:45:40 -0400
+Engine • revision 74625aed32
+Tools • Dart 2.1.0-dev.5.0.flutter-a2eb050044
 ```
 ## 初始化
 鉴于`Android`和`iOS`的差异化，对应平台设置还需手动设置，具体请参考[官网](http://docs.getui.com/getui/mobile/android/androidstudio_maven/)。
