@@ -1,7 +1,7 @@
 <manifest xmlns:tools="http://schemas.android.com/tools"
     package="com.jarvanmo.sona"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <permission android:protectionLevel="normal" android:name="com.jarvanmo.sona.service.SonaPushService"/>
+    <permission android:protectionLevel="normal" android:name="${applicationId}.service.SonaPushService"/>
 
     <application
         android:usesCleartextTraffic="true"
@@ -12,7 +12,7 @@
             android:exported="true"
             android:label="PushService"
             android:process=":pushservice"
-            android:permission="com.jarvanmo.sona.service.SonaPushService">
+            android:permission="${applicationId}.service.SonaPushService">
         </service>
 
         <service android:name=".service.SonaReceiverService"/>
