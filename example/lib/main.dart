@@ -18,11 +18,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    sona.register(sona.RegisterGetuiPushModel(
+    sona.register(
         appID: "your app id",
         appKey: "your app key",
         appSecret: "app secret"
-    )).then((data){
+    ).then((data){
       print(data.runtimeType.toString());
     });
 //    sona.receivedMessageData.listen(_receiveData,onError: (error){

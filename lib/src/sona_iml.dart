@@ -8,8 +8,34 @@ import 'sdk_status.dart';
 final MethodChannel _channel = const MethodChannel('com.jarvanmo/sona')
   ..setMethodCallHandler(_handler);
 
-Future<Map<dynamic, dynamic>> register(RegisterGetuiPushModel model) async {
-  return await _channel.invokeMethod("registerGeTui", model.params);
+///[appID],[appKey] and [appSecret]  only works  on iOS because
+///you have to configure these params in your build.gradle file on Android.
+/// sona will register push-manager if [registerOnAndroid] or [registerOnIOS] is true
+///[pushServiceName] only works on Android .GeTui allows you
+/// use custom push service to ensure GeTui works well on some devices.[pushServiceName] is a full name of your
+/// push service in JAVA.[pushServiceName] is not necessary.For details ,see [details](http://docs.getui.com/getui/mobile/android/androidstudio_maven/)
+/// [channel] only works on iOS
+Future<Map<dynamic, dynamic>> register(
+    {String appID,
+    String appKey,
+    String appSecret,
+    bool registerOnAndroid: true,
+    bool registerOnIOS: true,
+    String channel,
+    String pushServiceName,
+    bool lbsLocationEnable: false,
+    bool userVerify: false}) async {
+  return await _channel.invokeMethod("registerGeTui", {
+    "appID": appID,
+    "appKey": appKey,
+    "appSecret": appSecret,
+    "registerOnAndroid": registerOnAndroid,
+    "registerOnIOS": registerOnIOS,
+    "channel": channel,
+    "pushServiceName": pushServiceName,
+    "lbsLocationEnable": lbsLocationEnable,
+    "userVerify": userVerify
+  });
 }
 
 Future<String> clientID() async {
