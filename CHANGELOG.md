@@ -1,3 +1,6 @@
+## 0.0.7
+* 隐藏RegisterGetuiPushModel。
+
 ## 0.0.6
 * kotlin升级至1.3.11。
 * 部分api调整。
