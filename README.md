@@ -22,21 +22,21 @@ iOS上：
 ```
 Flutter上：
 ```dart
-Flutter 0.9.4 • channel beta • https://github.com/flutter/flutter.git
-Framework • revision f37c235c32 (2 weeks ago) • 2018-09-25 17:45:40 -0400
-Engine • revision 74625aed32
-Tools • Dart 2.1.0-dev.5.0.flutter-a2eb050044
+Flutter 1.0.0 • channel beta • https://github.com/flutter/flutter.git
+Framework • revision 5391447fae (4 weeks ago) • 2018-11-29 19:41:26 -0800
+Engine • revision 7375a0f414
+Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297)
 ```
 ## 初始化
 鉴于`Android`和`iOS`的差异化，对应平台设置还需手动设置，具体请参考[官网](http://docs.getui.com/getui/mobile/android/androidstudio_maven/)。
 在`Flutter`中通过`Sona`初使化个推推送:
 ```dart
     import 'package:sona/sona.dart' as sona;
-    sona.register(sona.RegisterGetuiPushModel(
+    sona.register(
         appID: "your app id",
         appKey: "your app key",
         appSecret: "app secret"
-    ));
+    );
 ```
 `appID`，`appKey`，`appSecret`目前仅在`iOS`上生效，因为在`android`上，这些配置是在`build.gradle`中完成的，所以使用`Sona`之前
 一定要在`android`工程配置`appID`、`appKey`以及`appSecret`：
