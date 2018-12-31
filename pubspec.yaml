@@ -1,6 +1,6 @@
 name: sona
 description: Sona makes possible using Getui push in flutter.Sona can handle payload data and etc.
-version: 0.0.5
+version: 0.0.6
 author: JarvanMo <jarvan.mo@gmail.com>
 homepage: https://github.com/JarvanMo/sona
 
