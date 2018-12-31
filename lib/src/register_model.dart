@@ -5,7 +5,7 @@
 /// use custom push service to ensure GeTui works well on some devices.[pushServiceName] is a full name of your
 /// push service in JAVA.[pushServiceName] is not necessary.For details ,see [details](http://docs.getui.com/getui/mobile/android/androidstudio_maven/)
 /// [channel] only works on iOS
-class RegisterGetuiPushModel {
+class _RegisterGetuiPushModel {
   final String appID;
   final String appKey;
   final String appSecret;
@@ -18,7 +18,7 @@ class RegisterGetuiPushModel {
   bool lbsLocationEnable;
   bool userVerify;
 
-  RegisterGetuiPushModel(
+  _RegisterGetuiPushModel(
       {this.appID,
       this.appKey,
       this.appSecret,
