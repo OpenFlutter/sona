@@ -7,7 +7,7 @@ sona makes possible using getui push in flutter.
 使用`Sona`之前，请到个推官网进行应用注册。
 
 ## 所用到的技术
-android使用到了*kotlin-1.3.0*：
+android使用到了*kotlin-1.3.11*：
 ```groovy
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
