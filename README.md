@@ -1,4 +1,4 @@
-![logo](./arts/logo.png)![pub package](https://img.shields.io/pub/v/sona.svg)
+![logo](./arts/logo.png) [![pub package](https://img.shields.io/pub/v/sona.svg)](https://pub.dartlang.org/packages/sona)
 
 sona makes possible using getui push in flutter.
 
