@@ -17,7 +17,6 @@ class SonaReceiverService : GTIntentService() {
     }
 
     override fun onReceiveServicePid(p0: Context, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onNotificationMessageClicked(p0: Context, p1: GTNotificationMessage) {
@@ -25,7 +24,6 @@ class SonaReceiverService : GTIntentService() {
     }
 
     override fun onReceiveCommandResult(p0: Context, p1: GTCmdMessage?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onReceiveClientId(p0: Context, p1: String) {
