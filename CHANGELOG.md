@@ -1,3 +1,6 @@
+## 0.0.8
+* 增加点击通知栏动作（仅Android）。
+
 ## 0.0.7
 * 隐藏RegisterGetuiPushModel。
 
