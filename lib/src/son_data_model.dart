@@ -1,3 +1,19 @@
+/// This only works on Android.
+class OnNotificationMessageClickedModel {
+  final String platform;
+  final String appID;
+  final String messageID;
+  final String taskID;
+  final String pkgName;
+  final String clientID;
+  final String content;
+  final String title;
+
+  OnNotificationMessageClickedModel({this.platform, this.appID, this.messageID,
+      this.taskID, this.pkgName, this.clientID, this.content, this.title});
+}
+
+
 ///[appID],[appKey] and [appSecret]  only works  on iOS because
 ///you have to configure these params in your build.gradle file on Android.
 /// sona will register push-manager if [registerOnAndroid] or [registerOnIOS] is true
@@ -20,14 +36,14 @@ class _RegisterGetuiPushModel {
 
   _RegisterGetuiPushModel(
       {this.appID,
-      this.appKey,
-      this.appSecret,
-      this.registerOnAndroid: true,
-      this.registerOnIOS: true,
-      this.channel,
-      this.pushServiceName,
-      this.lbsLocationEnable: false,
-      this.userVerify: false});
+        this.appKey,
+        this.appSecret,
+        this.registerOnAndroid: true,
+        this.registerOnIOS: true,
+        this.channel,
+        this.pushServiceName,
+        this.lbsLocationEnable: false,
+        this.userVerify: false});
 
   get params => _mapInternal();
 

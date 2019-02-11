@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-import 'register_model.dart';
 import 'sdk_status.dart';
+import 'son_data_model.dart';
 
 final MethodChannel _channel = const MethodChannel('com.jarvanmo/sona')
   ..setMethodCallHandler(_handler);
@@ -80,6 +80,19 @@ StreamController<GTSdkStatus> _receivedSdkStatusController =
 Stream<GTSdkStatus> get receivedSdkStatus =>
     _receivedSdkStatusController.stream;
 
+StreamController<OnNotificationMessageClickedModel>
+    _onNotificationMessageClickedController = new StreamController.broadcast();
+
+Stream<OnNotificationMessageClickedModel> get onNotificationMessageClicked =>
+    _onNotificationMessageClickedController.stream;
+
+dispose() {
+  _receivedClientIDController.close();
+  _receivedMessageDataController.close();
+  _receivedSdkStatusController.close();
+  _onNotificationMessageClickedController.close();
+}
+
 Future<dynamic> _handler(MethodCall methodCall) {
   if ("onReceiveMessageData" == methodCall.method) {
     _receivedMessageDataController.add(methodCall.arguments);
@@ -87,6 +100,8 @@ Future<dynamic> _handler(MethodCall methodCall) {
     _receivedClientIDController.add(methodCall.arguments);
   } else if ("onReceiveOnlineState" == methodCall.arguments) {
     _handleSdkStatus(methodCall);
+  } else if ("onNotificationMessageClicked" == methodCall.arguments) {
+    _handleOnNotificationMessageClicked(methodCall);
   }
 
   return Future.value(true);
@@ -102,4 +117,15 @@ _handleSdkStatus(MethodCall methodCall) {
   } else if ("STOPPED" == methodCall.arguments) {
     _receivedSdkStatusController.add(GTSdkStatus.STOPPED);
   }
+}
+
+_handleOnNotificationMessageClicked(MethodCall methodCall) {
+  _onNotificationMessageClickedController.add(OnNotificationMessageClickedModel(
+      platform: methodCall.arguments["platform"],
+      appID: methodCall.arguments["appID"],
+      taskID: methodCall.arguments["taskID"],
+      messageID: methodCall.arguments["messageID"],
+      pkgName: methodCall.arguments["pkgName"],
+      content: methodCall.arguments["content"],
+      title: methodCall.arguments["title"]));
 }

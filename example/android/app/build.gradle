@@ -57,7 +57,21 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+
+            ndk {
+                // 设置支持的SO库架构
+                abiFilters 'armeabi-v7a'
+            }
         }
+
+        debug{
+            ndk {
+                // 设置支持的SO库架构
+                abiFilters 'armeabi-v7a','x86','x86_64'
+            }
+        }
+
+
     }
 }
 
