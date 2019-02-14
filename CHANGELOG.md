@@ -1,3 +1,6 @@
+## 0.0.9
+* 增加对onNotificationMessageArrived的监听。
+
 ## 0.0.8
 * 增加点击通知栏动作（仅Android）。
 
