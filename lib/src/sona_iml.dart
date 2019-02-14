@@ -80,17 +80,24 @@ StreamController<GTSdkStatus> _receivedSdkStatusController =
 Stream<GTSdkStatus> get receivedSdkStatus =>
     _receivedSdkStatusController.stream;
 
-StreamController<OnNotificationMessageClickedModel>
+StreamController<NotificationMessageModel>
     _onNotificationMessageClickedController = new StreamController.broadcast();
 
-Stream<OnNotificationMessageClickedModel> get onNotificationMessageClicked =>
+Stream<NotificationMessageModel> get onNotificationMessageClicked =>
     _onNotificationMessageClickedController.stream;
+
+StreamController<NotificationMessageModel>
+_onNotificationMessageArrivedController = new StreamController.broadcast();
+
+Stream<NotificationMessageModel> get onNotificationMessageArrived =>
+    _onNotificationMessageArrivedController.stream;
 
 dispose() {
   _receivedClientIDController.close();
   _receivedMessageDataController.close();
   _receivedSdkStatusController.close();
   _onNotificationMessageClickedController.close();
+  _onNotificationMessageArrivedController.close();
 }
 
 Future<dynamic> _handler(MethodCall methodCall) {
@@ -102,6 +109,8 @@ Future<dynamic> _handler(MethodCall methodCall) {
     _handleSdkStatus(methodCall);
   } else if ("onNotificationMessageClicked" == methodCall.arguments) {
     _handleOnNotificationMessageClicked(methodCall);
+  }else if("onNotificationMessageArrived" == methodCall.arguments){
+    _handleOnNotificationMessageArrived(methodCall);
   }
 
   return Future.value(true);
@@ -120,7 +129,7 @@ _handleSdkStatus(MethodCall methodCall) {
 }
 
 _handleOnNotificationMessageClicked(MethodCall methodCall) {
-  _onNotificationMessageClickedController.add(OnNotificationMessageClickedModel(
+  _onNotificationMessageClickedController.add(NotificationMessageModel(
       platform: methodCall.arguments["platform"],
       appID: methodCall.arguments["appID"],
       taskID: methodCall.arguments["taskID"],
@@ -129,3 +138,15 @@ _handleOnNotificationMessageClicked(MethodCall methodCall) {
       content: methodCall.arguments["content"],
       title: methodCall.arguments["title"]));
 }
+
+_handleOnNotificationMessageArrived(MethodCall methodCall) {
+  _onNotificationMessageArrivedController.add(NotificationMessageModel(
+      platform: methodCall.arguments["platform"],
+      appID: methodCall.arguments["appID"],
+      taskID: methodCall.arguments["taskID"],
+      messageID: methodCall.arguments["messageID"],
+      pkgName: methodCall.arguments["pkgName"],
+      content: methodCall.arguments["content"],
+      title: methodCall.arguments["title"]));
+}
+

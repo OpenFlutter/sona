@@ -1,5 +1,5 @@
 /// This only works on Android.
-class OnNotificationMessageClickedModel {
+class NotificationMessageModel {
   final String platform;
   final String appID;
   final String messageID;
@@ -9,7 +9,7 @@ class OnNotificationMessageClickedModel {
   final String content;
   final String title;
 
-  OnNotificationMessageClickedModel({this.platform, this.appID, this.messageID,
+  NotificationMessageModel({this.platform, this.appID, this.messageID,
       this.taskID, this.pkgName, this.clientID, this.content, this.title});
 }
 
