@@ -15,6 +15,7 @@
     SonaPlugin *instance = [SonaPlugin sonaPlugin];
     [instance setMethodChannel:channel];
     [registrar addMethodCallDelegate:instance channel:channel];
+	[registrar addApplicationDelegate:instance];
 }
 
 FlutterMethodChannel *sonMethodChannel;
