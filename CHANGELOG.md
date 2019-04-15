@@ -1,3 +1,7 @@
+## 0.0.9+1
+
+* fix #10
+
 ## 0.0.9
 * 增加对onNotificationMessageArrived的监听。
 
