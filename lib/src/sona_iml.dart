@@ -38,6 +38,11 @@ Future<Map<dynamic, dynamic>> register(
   });
 }
 
+Future<void> setBadge(int count) async {
+  if(count<0) count = 0;
+  await _channel.invokeMethod("setBadge",count);
+}
+
 Future<String> clientID() async {
   return await _channel.invokeMethod("clientID");
 }

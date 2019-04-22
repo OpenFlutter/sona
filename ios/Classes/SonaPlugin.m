@@ -58,11 +58,20 @@ const NSString *keyAlias = @"alias";
         [self unBindAlias:call result:result];
     } else if([@"clientID" isEqualToString:call.method]){
         [self getClientID:result];
+    } else if([@"setBadge" isEqualToString:call.method]){
+        [self setBadge:call result:result];
     } else{
         result(FlutterMethodNotImplemented);
     }
+}
 
+- (void)setBadge:(FlutterMethodCall *)call result:(FlutterResult)result {
+    NSUInteger value = [call.arguments unsignedIntegerValue];
 
+    [GeTuiSdk setBadge:value];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:value];
+
+    result(@YES);
 }
 
 - (void)bindAlias:(FlutterMethodCall *)call result:(FlutterResult)result {
