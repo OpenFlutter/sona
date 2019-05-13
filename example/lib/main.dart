@@ -25,11 +25,11 @@ class _MyAppState extends State<MyApp> {
     ).then((data){
       print(data.runtimeType.toString());
     });
-//    sona.receivedMessageData.listen(_receiveData,onError: (error){
-//      print("erro ");
-//    },onDone: (){
-//      print("done");
-//    });
+    sona.receivedMessageData.listen(_receiveData,onError: (error){
+      print("erro ");
+    },onDone: (){
+      print("done");
+    });
 
 
 
