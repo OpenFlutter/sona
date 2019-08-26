@@ -1,6 +1,10 @@
 ![logo](./arts/logo.png) [![pub package](https://img.shields.io/pub/v/sona.svg)](https://pub.dartlang.org/packages/sona)
 
 sona makes possible using getui push in flutter.
+#@Deprecated
+
+This lib won't be updated.Devleopers should visit [the official flutter plugin](https://github.com/GetuiLaboratory/getui-flutter-plugin)
+for help.
 
 ## 简介
 `Sona`是个推推送SDK在`Flutter`上的实现。通过`Sona`,可以在Flutter上轻松使用个推推送。
