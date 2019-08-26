@@ -2,7 +2,7 @@
 
 sona makes possible using getui push in flutter.
 
-#@Deprecated
+# @Deprecated
 
 This lib won't be updated.Devleopers should visit [the official flutter plugin](https://github.com/GetuiLaboratory/getui-flutter-plugin)
 for help.
